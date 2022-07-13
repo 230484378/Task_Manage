@@ -1,20 +1,43 @@
 package com.example.springboot06.Entry;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+
 public class Task {
-    String task_id;//任务id
+    Integer task_id;//任务id
     String task_name;//任务名
     String task_message;//任务描述
     int task_state;//任务状态
-    String task_demand;//任务需求
     double task_price;//任务价格
     String task_sender;//任务人
-    String task_receiver;//接收人
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    Date task_date;
+    String task_StrDate;
+    int task_type;
 
-    public String getTask_id() {
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "task_id=" + task_id +
+                ", task_name='" + task_name + '\'' +
+                ", task_message='" + task_message + '\'' +
+                ", task_state=" + task_state +
+                ", task_price=" + task_price +
+                ", task_sender='" + task_sender + '\'' +
+                ", task_date=" + task_date +
+                ", task_StrDate='" + task_StrDate + '\'' +
+                ", task_type=" + task_type +
+                '}';
+    }
+
+    public Integer getTask_id() {
         return task_id;
     }
 
-    public void setTask_id(String task_id) {
+    public void setTask_id(Integer task_id) {
         this.task_id = task_id;
     }
 
@@ -42,14 +65,6 @@ public class Task {
         this.task_state = task_state;
     }
 
-    public String getTask_demand() {
-        return task_demand;
-    }
-
-    public void setTask_demand(String task_demand) {
-        this.task_demand = task_demand;
-    }
-
     public double getTask_price() {
         return task_price;
     }
@@ -66,25 +81,35 @@ public class Task {
         this.task_sender = task_sender;
     }
 
-    public String getTask_receiver() {
-        return task_receiver;
+    public Date getTask_date() {
+        return task_date;
     }
 
-    public void setTask_receiver(String task_receiver) {
-        this.task_receiver = task_receiver;
+    public void setTask_date(Date task_date) {
+        this.task_date = task_date;
+        Trance_DateStr();
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "task_id='" + task_id + '\'' +
-                ", task_name='" + task_name + '\'' +
-                ", task_message='" + task_message + '\'' +
-                ", task_state=" + task_state +
-                ", task_demand='" + task_demand + '\'' +
-                ", task_price=" + task_price +
-                ", task_sender='" + task_sender + '\'' +
-                ", task_receiver='" + task_receiver + '\'' +
-                '}';
+    public String getTask_StrDate() {
+        return task_StrDate;
+    }
+
+    public void setTask_StrDate(String task_StrDate) {
+        this.task_StrDate = task_StrDate;
+    }
+
+    public int getTask_type() {
+        return task_type;
+    }
+
+    public void setTask_type(int task_type) {
+        this.task_type = task_type;
+    }
+
+
+
+    public void Trance_DateStr(){
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+         task_StrDate=format.format(task_date);
     }
 }
