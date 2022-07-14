@@ -33,4 +33,7 @@ public interface Task_Mapper {
 
     @Delete("DELETE FROM task WHERE task_id = ${task_id}")
     public void Delete(@Param("task_id") int task_id);
+
+    @Update("Update task set task_reciver=\'${task_reciver}\' where task_id=${task_id}")
+    public void Assigned(@Param("task_id") int task_id,@Param("task_reciver") String task_reciver);
 }

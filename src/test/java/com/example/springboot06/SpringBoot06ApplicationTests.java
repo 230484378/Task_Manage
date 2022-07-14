@@ -18,8 +18,7 @@ class SpringBoot06ApplicationTests {
     void contextLoads() {
         List<Task> tasks = task_mapper.FindAll();
 
-        while (task_mapper.MaxId() !=null)
-            task_mapper.Delete(task_mapper.MaxId());
+        task_mapper.Assigned(1,"零零");
     }
 
 }

@@ -4,27 +4,24 @@ import com.example.springboot06.Entry.Task;
 import com.example.springboot06.Mappers.Task_Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.sql.Date;
-import java.util.LinkedList;
 import java.util.List;
 
 @Controller
+@CrossOrigin
 public class TaskController {
     @Autowired
     Task_Mapper task_mapper;
 
     @ResponseBody
-    @RequestMapping("/Tasks")
+    @RequestMapping("/tasks")
     public List<Task> GetTasks(Integer type){
-        System.out.println(type);
         List<Task> tasks=new ArrayList<>();
 
         if(null==type){
@@ -97,6 +94,12 @@ public class TaskController {
     @RequestMapping(value = "/delete")
     @ResponseBody
     public void Delete_task(Integer task_id){
-        System.out.println(task_id);
+        task_mapper.Delete(task_id);
+    }
+
+    @RequestMapping(value = "/assigned")
+    @ResponseBody
+    public void Assigned(Integer task_id,String task_reciver){
+        task_mapper.Assigned(task_id,task_reciver);
     }
 }

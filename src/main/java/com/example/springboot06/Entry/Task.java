@@ -9,14 +9,22 @@ public class Task {
     Integer task_id;//任务id
     String task_name;//任务名
     String task_message;//任务描述
-    int task_state;//任务状态
-    double task_price;//任务价格
+    int task_state;//任务状态  0代表未审核 1代表审核
+    double task_price;//任务价格 2位小数
     String task_sender;//任务人
     @JsonFormat(pattern = "yyyy-MM-dd")
-    Date task_date;
-    String task_StrDate;
-    int task_type;
+    Date task_date;//任务日期
+    String task_StrDate;//任务日期的String格式
+    int task_type;//任务类型 0代表需求任务 1代表生产任务
+    String task_recive;
 
+    public String getTask_recive() {
+        return task_recive;
+    }
+
+    public void setTask_recive(String task_recive) {
+        this.task_recive = task_recive;
+    }
 
     @Override
     public String toString() {
